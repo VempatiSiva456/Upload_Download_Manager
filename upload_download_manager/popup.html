@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload & Download Manager</title>
+    <style>
+    body { font-family: Arial, sans-serif; padding: 10px; }
+    #uploadStatus { margin-top: 10px; }
+    #filesList { margin-top: 20px; }
+    .file-item { margin-bottom: 5px; }
+    .delete-button { margin-left: 10px; }
+    #progressBarContainer {
+      width: 100%;
+      background-color: #ddd;
+      margin-top: 20px;
+      height: 20px;
+      display: none; /* Initially hidden */
+    }
+    #restartButton{
+      display: none;
+    }
+    #progressBar {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      text-align: center;
+      line-height: 20px; 
+      color: white;
+    }
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+  }
+
+  .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+  }
+
+  .tab button:hover {
+      background-color: #ddd;
+  }
+
+  .tab button.active {
+      background-color: #ccc;
+  }
+
+  .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+  }
+    </style>
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+<body>
+  <div class="tab">
+    <button class="tablinks" id="uploadTab">Upload</button>
+    <button class="tablinks" id="downloadTab">Download</button>
+</div>
+<div id="Upload" class="tabcontent">
+  <input type="file" id="fileInput" multiple>
+  <div id="progressBarContainer">
+    <div id="progressBar">0%</div>
+  </div>
+  <div id="uploadStatus"></div>
+    <button id="cancelButton">Cancel Upload</button>
+    <button id="restartButton">Restart Upload</button>
+    <button id="pauseResumeButton">Pause</button>
+    <button id="deleteAllButton">Delete All</button>
+
+    <div id="filesList"></div>
+  </div>
+
+  <div id="Download" class="tabcontent">
+    <div id="downloadProgressBarContainer" style="width: 100%; background-color: #ddd; margin-top: 20px; height: 20px; display: none;">
+      <div id="downloadProgressBar" style="height: 100%; background-color: #4CAF50; width: 0%; text-align: center; line-height: 20px; color: white;">0%</div>
+  </div>
+  <button id="cancelCurrentDownloadButton">Cancel Current Download</button>
+  <button id="pauseResumeDownloadButton">Pause</button>
+  <button id="restartDownloadButton">Restart Download</button>
+  <button id="cancelDownloadButton">Cancel Downloads</button>
+  <div id="downloadQueueDisplay">No files in queue</div>
+  
+    <div id="filesDownloadList"></div>
+</div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
